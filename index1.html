@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GestureDraw — ارسم بيدك</title>
+  <link rel="stylesheet" href="css/styles1.css" />
+</head>
+<body>
+
+  <div id="app">
+
+    <div id="stage">
+      <!-- خلفية الكاميرا (المرآة) -->
+      <video id="webcam" playsinline autoplay muted></video>
+      <canvas id="cameraCanvas"></canvas>
+      <!-- طبقة الرسم الدائم -->
+      <canvas id="drawCanvas"></canvas>
+      <!-- طبقة مؤشرات الأصابع (تُمسح كل إطار) -->
+      <canvas id="cursorCanvas"></canvas>
+
+      <div class="hud-top">
+        <div class="brand"><span class="brand-mark">●</span> GestureDraw</div>
+        <div class="status-pill">
+          <span id="statusDot" class="status-dot"></span>
+          <span id="statusText">جاري تشغيل الكاميرا…</span>
+        </div>
+      </div>
+
+      <div class="stats" id="stats">
+        <span id="fpsStat">FPS —</span>
+        <span id="handStat">أيادٍ: 0</span>
+      </div>
+
+      <div id="loadingOverlay">
+        <div class="loader-text" id="loaderText">جاري تحميل نموذج تتبع اليد…</div>
+        <div class="loader-bar"></div>
+        <button type="button" id="loaderRetry" class="loader-retry" hidden>إعادة المحاولة</button>
+      </div>
+
+      <div class="toolbar" id="toolbar">
+        <div class="tool-group colors">
+          <button class="swatch active" data-color="#FFB020" style="--c:#FFB020" title="كهرماني" aria-label="لون كهرماني"></button>
+          <button class="swatch" data-color="#5EEAD4" style="--c:#5EEAD4" title="فيروزي" aria-label="لون فيروزي"></button>
+          <button class="swatch" data-color="#F1EFEA" style="--c:#F1EFEA" title="أبيض" aria-label="لون أبيض"></button>
+          <button class="swatch" data-color="#FF6B6B" style="--c:#FF6B6B" title="أحمر مرجاني" aria-label="لون أحمر مرجاني"></button>
+        </div>
+
+        <div class="tool-group">
+          <label class="size-label" for="brushSize">سُمك الفرشاة</label>
+          <input type="range" id="brushSize" min="2" max="40" value="10" />
+        </div>
+
+        <div class="tool-group actions">
+          <button id="clearBtn" class="btn btn-ghost">امسح اللوحة</button>
+          <button id="downloadBtn" class="btn btn-primary">تنزيل الرسمة</button>
+        </div>
+      </div>
+
+      <div class="hint" id="hint">
+        اقرص بإصبعك السبابة والإبهام (pinch) عشان ترسم — افتحهم عشان ترفع القلم
+      </div>
+    </div>
+
+  </div>
+
+  <script type="module" src="app1.js"></script>
+</body>
+</html>
